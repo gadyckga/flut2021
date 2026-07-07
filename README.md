@@ -7,7 +7,7 @@ Supports images, audio and video embeddings, and Leaflet TileLayer/geojson overl
 </p>
 
 ## Live links (replace with your own)
-- Leaflet Map https://gadyckga.github.io/leaflet-storymaps-sommerserie/
+- Leaflet Map https://gadyckga.github.io/flut2021/
 - Google Sheets template https://docs.google.com/spreadsheets/d/1op6IGt0dHCAhPoC-gY8Yw3iHJ_8LW-xMqBKwKW3pxwM/edit#gid=0
 
 ## Create Your Own
