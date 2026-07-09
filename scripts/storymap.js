@@ -469,31 +469,21 @@ $(window).on('load', function() {
 
 
   /**
-   * Changes map attribution (author, GitHub repo, email etc.) in bottom-right
-   */
-  function changeAttribution() {
-    var attributionHTML = $('.leaflet-control-attribution')[0].innerHTML;
-    var credit = 'View <a href="'
-      // Show Google Sheet URL if the variable exists and is not empty, otherwise link to Chapters.csv
-      + (typeof googleDocURL !== 'undefined' && googleDocURL ? googleDocURL : './csv/Chapters.csv')
-      + '" target="_blank">data</a>';
+ * Changes map attribution (author, GitHub repo, email etc.) in bottom-right
+ * (customized: removes BOTH "data" and "code" links)
+ */
+function changeAttribution() {
+  var attrEl = $('.leaflet-control-attribution')[0];
+  if (!attrEl) return;
 
-    var name = getSetting('_authorName');
-    var url = getSetting('_authorURL');
+  // Das sind die Karteninfos (Tiles/OSM etc.), die Leaflet schon gesetzt hat
+  var attributionHTML = attrEl.innerHTML;
 
-    if (name && url) {
-      if (url.indexOf('@') > 0) { url = 'mailto:' + url; }
-      credit += ' by <a href="' + url + '">' + name + '</a> | ';
-    } else if (name) {
-      credit += ' by ' + name + ' | ';
-    } else {
-      credit += ' | ';
-    }
+  // DEIN statischer Credit (ohne Links)
+  var staticCredit = 'Storymap by Andreas Dyck | Code with Leaflet';
 
-    credit += 'View <a href="' + getSetting('_githubRepo') + '">code</a>';
-    if (getSetting('_codeCredit')) credit += ' by ' + getSetting('_codeCredit');
-    credit += ' with ';
-    $('.leaflet-control-attribution')[0].innerHTML = credit + attributionHTML;
+  // statischer Credit + Karteninfos
+  attrEl.innerHTML = staticCredit + ' | ' + attributionHTML;
   }
 
 });
